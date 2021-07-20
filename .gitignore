@@ -1,0 +1,4 @@
+node_modules/
+_cacache/
+.vscode/
+_logs/

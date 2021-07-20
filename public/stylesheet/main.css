@@ -1,0 +1,32 @@
+.container .card .caption-full {
+    padding: 8px;
+}
+
+.container {
+    padding-top: 15px;
+}
+
+.card {
+    margin-bottom: 20px;
+}
+
+.img-responsive {
+    height: 500px;
+}
+
+#delete-form {
+    display: inline;
+}
+
+.dropdown {
+    display: inline;
+    text-align: center;
+}
+
+.dropdown-toggle::after { 
+    content: none; 
+} 
+.delete {
+    min-width: 50px;
+    padding-left: 50px;
+}

@@ -1,0 +1,30 @@
+<%- include('../header') %>
+
+<div class="container">
+      <div >
+
+      <h1 class="jumbotron" style="width: 55% ;align-items: center;margin: 20px auto;" >Add New Comments to <%= campground.name %> </h1>
+<div style="width: 30%; margin: 0 auto;">
+      <form action="/campgrounds/<%= campground._id %>/comment" method="POST">
+          
+          <div class="form-group">
+            <input class="form-control" type="text" name="comments[text]" placeholder="Comments">
+          </div>
+
+          <!-- <div class="form-group">
+            <input class="form-control" type="text" name="comments[author]" placeholder="author">
+          </div> -->
+
+          <div class="form-group">
+            <button class="btn btn-lg btn-default btn-primary btn-block">SUBMIT</button>      
+          </div>
+           <a href="/campgrounds">Go back</a> 
+          
+      </form>
+      
+</div>
+
+       </div>
+</div>
+
+<%- include('../footer') %>

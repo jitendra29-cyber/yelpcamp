@@ -1,0 +1,103 @@
+<%- include('../header') %>
+
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">snap_site</p>
+            <div class="list-group">
+                <li class="list-group-item active">info 1</li>
+                <li class="list-group-item">info 2</li>
+                <li class="list-group-item">info 3</li>
+            </div>
+        </div>
+         
+        <div class="col-md-9">
+             <div class="card">
+                <img class="img-responsive"  src="<%= campground.image %>" alt="">
+                <div class="caption-full">
+                    <!-- <h4 class="float-right">$<%= campground.price %>/night</h4> -->
+                    <h4><a href=""><%= campground.name %></a></h4>
+                    <p>
+                        <%= campground.description %>
+                    </p>
+                    <p>
+                        <em>Submitted by <%= campground.author.username %>...</em>
+                    </p>
+
+                 <%   if(currentUser && campground.author.id.equals(currentUser._id)){ %>
+                    <a class="btn btn-warning btn-sm" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
+                    
+                    <form id="delete-form" action="/campgrounds/<%= campground._id %>?_method=delete" method="POST">
+                        <button class="btn btn-danger btn-sm">delete</button>
+                    </form>
+               <% } %>
+                    <br>
+                    <a href="/campgrounds">Go back</a>
+                </div>
+             </div>
+            
+             <div class="card card-body bg-light">
+                 <div >
+                        <div class="text-right">
+                             <a class="btn btn-success" href="/campgrounds/<%= campground._id %>/comment/new">Add comments</a>
+                        </div>
+                        <hr>
+                        <% campground.comments.forEach(function(comment){ %>
+                              <div class="row">
+                                  <div class="col-md-12">
+                                     <strong><%= comment.author.username %></strong>
+                                    
+                                     <div class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span></a>
+                                        <div class="dropdown-menu">
+                                            <%   if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                                               <li> <a class="btn btn-sm" href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit">edit</a> </li>
+                                               
+                                               <li class="delete"> 
+                                                   <form id="delete-form" action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                                                     <button class="btn btn-sm"> delete </button>
+                                                   </form>
+                                               </li>
+                                         <% } %>
+                                          <!-- <li><a href="#">Action</a></li>
+                                          <li><a href="#">Another action</a></li>
+                                          <li><a href="#">Something else here</a></li>
+                                          <li role="separator" class="divider"></li>
+                                          <li><a href="#">Separated link</a></li>
+                                          <li role="separator" class="divider"></li>
+                                          <li><a href="#">One more separated link</a></li> -->
+                                        </div>
+                                    </div>
+
+                            
+                                <div class="content">
+                                    <span  class="float-right"><em> <%= comment.created.toDateString() %></em> </span>
+                                </div>
+                                      <p>  
+                                         <%= comment.text %>
+                                      </p>   
+                                     </div>
+                                  </div>
+                        <% }); %>
+              
+                 </div>
+                  
+             </div>
+                     
+          
+           
+            
+            
+           
+        </div>
+ 
+    </div>
+ 
+</div>
+
+
+
+<%- include('../footer') %>

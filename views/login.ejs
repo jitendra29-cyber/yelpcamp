@@ -1,0 +1,23 @@
+<%- include('header') %>
+
+<div class="container">
+    <h1>LOGIN!</h1>
+
+    <form action="/login" method="POST">
+        <div class="field">
+         <label for="">UserName</label>
+         <input type="text" name="username" placeholder="UserName">
+        </div> 
+        
+        <div class="field">
+         <label for="">Password</label>
+         <input type="password" name="password" placeholder="Password">
+        </div> 
+     
+         <button>login</button>
+    </form>
+</div>
+
+
+
+<%- include('footer') %>
